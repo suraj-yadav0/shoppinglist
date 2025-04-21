@@ -49,19 +49,15 @@ MainView {
 	}
         }
 
-        Label {
-            anchors {
-                top: header.bottom
-                left: parent.left
-                right: parent.right
-                bottom: parent.bottom
-            }
-            text: i18n.tr('Hello World!')
-
-            font.pixelSize: FontUtils.sizeToPixels("large")
-
-            verticalAlignment: Label.AlignVCenter
-            horizontalAlignment: Label.AlignHCenter
-        }
+       Button {
+    id: buttonAdd
+	anchors {
+		top: header.bottom
+		right: parent.right
+		topMargin: units.gu(2)
+		rightMargin: units.gu(2)
+	}
+	text: i18n.tr('Add')
+}
     }
 }
