@@ -58,6 +58,18 @@ MainView {
 		rightMargin: units.gu(2)
 	}
 	text: i18n.tr('Add')
+    onClicked: console.log(i18n.tr('Shopping list item: ' + textFieldInput.text))
+}
+
+TextField {
+	id: textFieldInput
+	anchors {
+		top: header.bottom
+		left: parent.left
+		topMargin: units.gu(2)
+		leftMargin: units.gu(2)
+	}
+	placeholderText: i18n.tr('Shopping list item')
 }
     }
 }
