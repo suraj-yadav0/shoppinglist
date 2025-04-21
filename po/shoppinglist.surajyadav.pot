@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shoppinglist.surajyadav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-21 06:57+0000\n"
+"POT-Creation-Date: 2025-04-21 07:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/Main.qml:45 shoppinglist.desktop.in.h:1
+#: ../qml/Main.qml:47 shoppinglist.desktop.in.h:1
 msgid "Shopping List"
 msgstr ""
 
-#: ../qml/Main.qml:46
+#: ../qml/Main.qml:48
 msgid "Never forget what to buy"
 msgstr ""
 
-#: ../qml/Main.qml:60
+#: ../qml/Main.qml:62
 msgid "Add"
 msgstr ""
 
-#: ../qml/Main.qml:61
-msgid "Shopping list item: "
-msgstr ""
-
-#: ../qml/Main.qml:72
+#: ../qml/Main.qml:74
 msgid "Shopping list item"
 msgstr ""

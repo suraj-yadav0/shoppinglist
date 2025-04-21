@@ -32,7 +32,9 @@ MainView {
     backgroundColor: UbuntuColors.graphite
 
         
-    
+    ListModel {
+	id: shoppinglistModel
+}
 
     Page {
         anchors.fill: parent
@@ -58,7 +60,7 @@ MainView {
 		rightMargin: units.gu(2)
 	}
 	text: i18n.tr('Add')
-    onClicked: console.log(i18n.tr('Shopping list item: ' + textFieldInput.text))
+    onClicked: shoppinglistModel.append({"name": textFieldInput.text})
 }
 
 TextField {
@@ -70,6 +72,25 @@ TextField {
 		leftMargin: units.gu(2)
 	}
 	placeholderText: i18n.tr('Shopping list item')
+}
+
+ListView {
+    id: shoppinglistView
+    anchors {   
+        top: textFieldInput.bottom
+        bottom: parent.bottom
+        left: parent.left
+        right: parent.right
+        topMargin: units.gu(2)
+    }
+    model: shoppinglistModel
+    delegate: ListItem {
+       
+        ListItemLayout {
+            title.text: name  
+            title.color: "white"  
+        }
+    }
 }
     }
 }
