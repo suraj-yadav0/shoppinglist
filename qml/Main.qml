@@ -29,12 +29,24 @@ MainView {
     width: units.gu(45)
     height: units.gu(75)
 
+    backgroundColor: UbuntuColors.graphite
+
+        
+    
+
     Page {
         anchors.fill: parent
+
+        
+        
 
         header: PageHeader {
             id: header
             title: i18n.tr('Shopping List')
+            subtitle: i18n.tr('Never forget what to buy')
+            StyleHints {
+		foregroundColor: "orange"
+	}
         }
 
         Label {
@@ -45,6 +57,8 @@ MainView {
                 bottom: parent.bottom
             }
             text: i18n.tr('Hello World!')
+
+            font.pixelSize: FontUtils.sizeToPixels("large")
 
             verticalAlignment: Label.AlignVCenter
             horizontalAlignment: Label.AlignHCenter
