@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shoppinglist.surajyadav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-22 05:37+0000\n"
+"POT-Creation-Date: 2025-04-22 07:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/Main.qml:47 shoppinglist.desktop.in.h:1
+#: ../qml/Main.qml:45 shoppinglist.desktop.in.h:1
 msgid "Shopping List"
 msgstr ""
 
-#: ../qml/Main.qml:48
+#: ../qml/Main.qml:46
 msgid "Never forget what to buy"
 msgstr ""
 
-#: ../qml/Main.qml:60
+#: ../qml/Main.qml:57
 msgid "Add"
 msgstr ""
 
-#: ../qml/Main.qml:72
+#: ../qml/Main.qml:71
 msgid "Shopping list item"
 msgstr ""
 
@@ -37,6 +37,26 @@ msgstr ""
 msgid "Remove all..."
 msgstr ""
 
-#: ../qml/Main.qml:93
+#: ../qml/Main.qml:95
 msgid "Remove selected..."
+msgstr ""
+
+#: ../qml/Main.qml:146
+msgid "Remove all items"
+msgstr ""
+
+#: ../qml/Main.qml:147 ../qml/Main.qml:157
+msgid "Are you sure?"
+msgstr ""
+
+#: ../qml/Main.qml:156
+msgid "Remove selected items"
+msgstr ""
+
+#: ../qml/OKCancelDialog.qml:10
+msgid "OK"
+msgstr ""
+
+#: ../qml/OKCancelDialog.qml:19
+msgid "Cancel"
 msgstr ""
