@@ -29,7 +29,7 @@ MainView {
     width: units.gu(45)
     height: units.gu(75)
 
-    backgroundColor: UbuntuColors.graphite
+  
 
         
     ListModel {
@@ -46,9 +46,7 @@ MainView {
             id: header
             title: i18n.tr('Shopping List')
             subtitle: i18n.tr('Never forget what to buy')
-            StyleHints {
-		foregroundColor: "orange"
-	}
+          
         }
 
        Button {
