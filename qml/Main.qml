@@ -72,6 +72,29 @@ TextField {
 	placeholderText: i18n.tr('Shopping list item')
 }
 
+Row {
+	spacing: units.gu(1)
+	anchors {
+		bottom: parent.bottom
+		left: parent.left
+		right: parent.right
+		topMargin: units.gu(1)
+		bottomMargin: units.gu(2)
+		leftMargin: units.gu(2)
+		rightMargin: units.gu(2)
+	}
+	Button {
+		id: buttonRemoveAll
+		text: i18n.tr("Remove all...")
+		width: parent.width / 2 - units.gu(0.5)
+	}
+	Button {
+		id: buttonRemoveSelected
+		text: i18n.tr("Remove selected...")
+		width: parent.width / 2 - units.gu(0.5)
+	}
+}
+
 ListView {
     id: shoppinglistView
     anchors {   
