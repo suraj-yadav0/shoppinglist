@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shoppinglist.surajyadav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-22 07:19+0000\n"
+"POT-Creation-Date: 2025-04-22 07:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,39 +17,57 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/Main.qml:45 shoppinglist.desktop.in.h:1
+#: ../qml/AboutDialog.qml:7 ../qml/Main.qml:60
+msgid "About"
+msgstr ""
+
+#: ../qml/AboutDialog.qml:12
+msgid ""
+"This is an example shopping list app designed to teach you Ubuntu Touch app "
+"development."
+msgstr ""
+
+#: ../qml/AboutDialog.qml:16
+msgid "Close"
+msgstr ""
+
+#: ../qml/Main.qml:43 shoppinglist.desktop.in.h:1
 msgid "Shopping List"
 msgstr ""
 
-#: ../qml/Main.qml:46
+#: ../qml/Main.qml:44
 msgid "Never forget what to buy"
 msgstr ""
 
-#: ../qml/Main.qml:57
+#: ../qml/Main.qml:56
+msgid "Settings"
+msgstr ""
+
+#: ../qml/Main.qml:75
 msgid "Add"
 msgstr ""
 
-#: ../qml/Main.qml:71
+#: ../qml/Main.qml:89
 msgid "Shopping list item"
 msgstr ""
 
-#: ../qml/Main.qml:88
+#: ../qml/Main.qml:106
 msgid "Remove all..."
 msgstr ""
 
-#: ../qml/Main.qml:95
+#: ../qml/Main.qml:113
 msgid "Remove selected..."
 msgstr ""
 
-#: ../qml/Main.qml:146
+#: ../qml/Main.qml:159
 msgid "Remove all items"
 msgstr ""
 
-#: ../qml/Main.qml:147 ../qml/Main.qml:157
+#: ../qml/Main.qml:160 ../qml/Main.qml:170
 msgid "Are you sure?"
 msgstr ""
 
-#: ../qml/Main.qml:156
+#: ../qml/Main.qml:169
 msgid "Remove selected items"
 msgstr ""
 

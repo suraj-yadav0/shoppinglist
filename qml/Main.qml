@@ -31,8 +31,6 @@ MainView {
     width: units.gu(45)
     height: units.gu(75)
 
-    
-
     ListModel {
         id: shoppinglistModel
     }
@@ -44,6 +42,26 @@ MainView {
             id: header
             title: i18n.tr('Shopping List')
             subtitle: i18n.tr('Never forget what to buy')
+            ActionBar {
+                anchors {
+                    top: parent.top
+                    right: parent.right
+                    topMargin: units.gu(1)
+                    rightMargin: units.gu(1)
+                }
+                numberOfSlots: 2
+                actions: [
+                    Action {
+                        iconName: "settings"
+                        text: i18n.tr("Settings")
+                    },
+                    Action {
+                        iconName: "info"
+                        text: i18n.tr("About")
+                        onTriggered: PopupUtils.open(aboutDialog)
+                    }
+                ]
+            }
         }
 
         Button {
@@ -87,7 +105,7 @@ MainView {
                 id: buttonRemoveAll
                 text: i18n.tr("Remove all...")
                 width: parent.width / 2 - units.gu(0.5)
-               onClicked: PopupUtils.open(removeAllDialog)
+                onClicked: PopupUtils.open(removeAllDialog)
             }
 
             Button {
@@ -109,53 +127,53 @@ MainView {
             }
             model: shoppinglistModel
             delegate: ListItem {
-              
-leadingActions: ListItemActions {
-        actions: [
-            Action {
-                iconName: "delete"
-                onTriggered: shoppinglistModel.remove(index)
-            }
-        ]
-    }
 
-    trailingActions: ListItemActions {
-actions: [
-    Action {
-        iconName: "info"
-        onTriggered: shoppinglistModel.remove(index)
-    }
-]
-    }
-                ListItemLayout {
-                    title.text: name
-                    
+                leadingActions: ListItemActions {
+                    actions: [
+                        Action {
+                            iconName: "delete"
+                            onTriggered: shoppinglistModel.remove(index)
+                        }
+                    ]
                 }
 
-                
+                trailingActions: ListItemActions {
+                    actions: [
+                        Action {
+                            iconName: "info"
+                            onTriggered: shoppinglistModel.remove(index)
+                        }
+                    ]
+                }
+                ListItemLayout {
+                    title.text: name
+                }
             }
-            
         }
     }
 
+    Component {
+        id: removeAllDialog
+
+        OKCancelDialog {
+            title: i18n.tr("Remove all items")
+            text: i18n.tr("Are you sure?")
+            onDoAction: console.log("Remove all items")
+        }
+    }
 
     Component {
-	id: removeAllDialog
+        id: removeSelectedDialog
 
-	OKCancelDialog {
-		title: i18n.tr("Remove all items")
-		text: i18n.tr("Are you sure?")
-		onDoAction: console.log("Remove all items")
-	}
-}
+        OKCancelDialog {
+            title: i18n.tr("Remove selected items")
+            text: i18n.tr("Are you sure?")
+            onDoAction: console.log("Remove selected items")
+        }
+    }
 
-Component {
-	id: removeSelectedDialog
-
-	OKCancelDialog {
-		title: i18n.tr("Remove selected items")
-		text: i18n.tr("Are you sure?")
-		onDoAction: console.log("Remove selected items")
-	}
+    Component {
+	id: aboutDialog
+	AboutDialog {}
 }
 }
