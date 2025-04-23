@@ -1,7 +1,6 @@
 The UT Findings
 ===============
 
---------------
 
 Module 1
 --------
@@ -58,7 +57,7 @@ Module 1
       root-equivalent permissions for Docker operations, so ensure you
       understand the security implications.
 
-   --------------
+  
 
 2. The Docker installation does not work. The rest of the Packages can
    be installed but not docker. So as Mentioned in the Documentation
