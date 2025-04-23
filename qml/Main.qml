@@ -31,10 +31,25 @@ MainView {
     width: units.gu(45)
     height: units.gu(75)
 
-    property bool selectionMode: true
+    property bool selectionMode: false
 
+    //Our List Model
     ListModel {
         id: shoppinglistModel
+
+        function addItem(name, selected) {
+            shoppinglistModel.append({
+                "name": name,
+                "selected": selected
+            });
+        }
+
+        function removeSelectedItems() {
+	for(var i=shoppinglistModel.count-1; i>=0; i--) {
+		if(shoppinglistModel.get(i).selected)
+			shoppinglistModel.remove(i);
+	}
+}
     }
 
     Page {
@@ -77,9 +92,7 @@ MainView {
                 rightMargin: units.gu(2)
             }
             text: i18n.tr('Add')
-            onClicked: shoppinglistModel.append({
-                "name": textFieldInput.text
-            })
+            onClicked: shoppinglistModel.addItem(textFieldInput.text, false);
         }
 
         // The input textfield
@@ -108,7 +121,12 @@ MainView {
                 topMargin: units.gu(2)
             }
             model: shoppinglistModel
-
+function refresh() {
+	// Refresh the list to update the selected status
+	var tmp = model;
+	model = null;
+	model = tmp;
+}
             delegate: ListItem {
                 Rectangle {
                     anchors.fill: parent
@@ -142,6 +160,7 @@ MainView {
                         leftMargin: units.gu(2)
                         verticalCenter: parent.verticalCenter
                     }
+                    checked: shoppinglistModel.get(index).selected
                 }
 
                 Text {
@@ -153,6 +172,16 @@ MainView {
                         verticalCenter: parent.verticalCenter
                     }
                 }
+                MouseArea {
+	anchors.fill: parent
+	onPressAndHold: root.selectionMode = true;
+	onClicked: {
+		if(root.selectionMode) {
+			shoppinglistModel.get(index).selected = !shoppinglistModel.get(index).selected;
+			shoppinglistView.refresh();
+        }
+	}
+}
             }
         }
 
@@ -193,7 +222,7 @@ MainView {
         OKCancelDialog {
             title: i18n.tr("Remove all items")
             text: i18n.tr("Are you sure?")
-            onDoAction: console.log("Remove all items")
+            onDoAction: shoppinglistModel.clear()
         }
     }
 
@@ -203,7 +232,10 @@ MainView {
         OKCancelDialog {
             title: i18n.tr("Remove selected items")
             text: i18n.tr("Are you sure?")
-            onDoAction: console.log("Remove selected items")
+            onDoAction: {
+	shoppinglistModel.removeSelectedItems();
+	root.selectionMode = false;
+}
         }
     }
 
