@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shoppinglist.surajyadav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-22 08:35+0000\n"
+"POT-Creation-Date: 2025-04-23 07:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/AboutDialog.qml:7 ../qml/Main.qml:60
+#: ../qml/AboutDialog.qml:7 ../qml/Main.qml:62
 msgid "About"
 msgstr ""
 
@@ -31,51 +31,47 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: ../qml/Main.qml:43 shoppinglist.desktop.in.h:1
+#: ../qml/Main.qml:45 shoppinglist.desktop.in.h:1
 msgid "Shopping List"
 msgstr ""
 
-#: ../qml/Main.qml:44
+#: ../qml/Main.qml:46
 msgid "Never forget what to buy"
 msgstr ""
 
-#: ../qml/Main.qml:56
+#: ../qml/Main.qml:58
 msgid "Settings"
 msgstr ""
 
-#: ../qml/Main.qml:75
+#: ../qml/Main.qml:79
 msgid "Add"
 msgstr ""
 
-#: ../qml/Main.qml:89
+#: ../qml/Main.qml:95
 msgid "Shopping list item"
 msgstr ""
 
-#: ../qml/Main.qml:106
-msgid "Remove all..."
-msgstr ""
-
-#: ../qml/Main.qml:109
-msgid "Row Button is Working"
-msgstr ""
-
-#: ../qml/Main.qml:114
-msgid "Remove selected..."
-msgstr ""
-
-#: ../qml/Main.qml:145
+#: ../qml/Main.qml:132
 msgid "Info trailing button pressed"
 msgstr ""
 
-#: ../qml/Main.qml:160
+#: ../qml/Main.qml:175
+msgid "Remove all..."
+msgstr ""
+
+#: ../qml/Main.qml:183
+msgid "Remove selected..."
+msgstr ""
+
+#: ../qml/Main.qml:194
 msgid "Remove all items"
 msgstr ""
 
-#: ../qml/Main.qml:161 ../qml/Main.qml:171
+#: ../qml/Main.qml:195 ../qml/Main.qml:205
 msgid "Are you sure?"
 msgstr ""
 
-#: ../qml/Main.qml:170
+#: ../qml/Main.qml:204
 msgid "Remove selected items"
 msgstr ""
 

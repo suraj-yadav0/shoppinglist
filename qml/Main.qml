@@ -31,6 +31,8 @@ MainView {
     width: units.gu(45)
     height: units.gu(75)
 
+    property bool selectionMode: true
+
     ListModel {
         id: shoppinglistModel
     }
@@ -64,6 +66,8 @@ MainView {
             }
         }
 
+        // The Add Button
+
         Button {
             id: buttonAdd
             anchors {
@@ -78,6 +82,8 @@ MainView {
             })
         }
 
+        // The input textfield
+
         TextField {
             id: textFieldInput
             anchors {
@@ -89,45 +95,26 @@ MainView {
             placeholderText: i18n.tr('Shopping list item')
         }
 
-        Row {
-            spacing: units.gu(1)
-            anchors {
-                bottom: parent.bottom
-                left: parent.left
-                right: parent.right
-                topMargin: units.gu(1)
-                bottomMargin: units.gu(2)
-                leftMargin: units.gu(2)
-                rightMargin: units.gu(2)
-            }
-
-            Button {
-                id: buttonRemoveAll
-                text: i18n.tr("Remove all...")
-                width: parent.width / 2 - units.gu(0.5)
-              //  onClicked: PopupUtils.open(removeAllDialog)
-              onClicked : console.log(i18n.tr('Row Button is Working'))
-            }
-
-            Button {
-                id: buttonRemoveSelected
-                text: i18n.tr("Remove selected...")
-                width: parent.width / 2 - units.gu(0.5)
-                onClicked: PopupUtils.open(removeSelectedDialog)
-            }
-        }
+        //The ListView
 
         ListView {
             id: shoppinglistView
             anchors {
                 top: textFieldInput.bottom
                 bottom: parent.bottom
+                bottomMargin: units.gu(10)
                 left: parent.left
                 right: parent.right
                 topMargin: units.gu(2)
             }
             model: shoppinglistModel
+
             delegate: ListItem {
+                Rectangle {
+                    anchors.fill: parent
+                    z: -1  // explicitly set z-index to ensure it's beneath
+                    color: index % 2 ? theme.palette.normal.selection : theme.palette.normal.background
+                }
 
                 leadingActions: ListItemActions {
                     actions: [
@@ -146,9 +133,56 @@ MainView {
                         }
                     ]
                 }
-                ListItemLayout {
-                    title.text: name
+
+                CheckBox {
+                    id: itemCheckbox
+                    visible: root.selectionMode
+                    anchors {
+                        left: parent.left
+                        leftMargin: units.gu(2)
+                        verticalCenter: parent.verticalCenter
+                    }
                 }
+
+                Text {
+                    id: itemText
+                    text: name
+                    anchors {
+                        left: root.selectionMode ? itemCheckbox.right : parent.left
+                        leftMargin: root.selectionMode ? units.gu(1) : units.gu(2)
+                        verticalCenter: parent.verticalCenter
+                    }
+                }
+            }
+        }
+
+        // Bottom Row
+
+        Row {
+            spacing: units.gu(1)
+            anchors {
+                bottom: parent.bottom
+                left: parent.left
+                right: parent.right
+                topMargin: units.gu(1)
+                bottomMargin: units.gu(2)
+                leftMargin: units.gu(2)
+                rightMargin: units.gu(2)
+            }
+
+            Button {
+                id: buttonRemoveAll
+                text: i18n.tr("Remove all...")
+                width: parent.width / 2 - units.gu(0.5)
+                onClicked: PopupUtils.open(removeAllDialog)
+                // onClicked: console.log(i18n.tr('Row Button is Working'))
+            }
+
+            Button {
+                id: buttonRemoveSelected
+                text: i18n.tr("Remove selected...")
+                width: parent.width / 2 - units.gu(0.5)
+                onClicked: PopupUtils.open(removeSelectedDialog)
             }
         }
     }
@@ -174,7 +208,7 @@ MainView {
     }
 
     Component {
-	id: aboutDialog
-	AboutDialog {}
-}
+        id: aboutDialog
+        AboutDialog {}
+    }
 }
