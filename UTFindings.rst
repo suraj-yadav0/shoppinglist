@@ -72,14 +72,14 @@ Module 1
 
          for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
 
-      1. Setup the Docker’s apt repository and Install Docker through
+      2. Setup the Docker’s apt repository and Install Docker through
          apt or its Desktop application.
 
       .. code:: bash
 
          sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-      1. Verify that the installation is successful by running the
+      3. Verify that the installation is successful by running the
          ``hello-world`` image:
 
          .. code:: bash
@@ -100,7 +100,7 @@ Module 2
 
 --------------
 
-1. Not able to Change the Foreground Color in the PageHeader
+2. Not able to Change the Foreground Color in the PageHeader
 
    -  Solution
 
@@ -148,12 +148,18 @@ Module 2
 Module 3
 --------
 
-1. The Docs Provide some links to UBports API docs. But all these links
-   lead to the same place. So it is confusing to find the right link.
 
---------------
+1. UBports API Links All Redirect to Same Page
 
-1. The Buttons in the Row are not working. → 3.4 in the Docs
+**Observation:**
+    Links lack specificity; this undermines documentation clarity.
+
+**Recommended Action:**
+    Validate, update, and contextualize all links to relevant API sections.
+
+---
+
+2. The Buttons in the Row are not working. → 3.4 in the Docs
 
 -  Solution 3.4
 
