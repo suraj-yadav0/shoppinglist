@@ -3,15 +3,15 @@ import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
 
 Dialog {
-    id: dialog
-    signal doAction()
+    id: dialog //the id attribute
+    signal doAction() //signal
 
     Button {
-        text: i18n.tr("OK")
+        text: i18n.tr("OK") //dynamic property attribute
         color: theme.palette.normal.negative
         onClicked: {
             PopupUtils.close(dialog)
-            doAction()
+            doAction() 
         }
     }
 

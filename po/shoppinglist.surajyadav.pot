@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shoppinglist.surajyadav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-22 07:26+0000\n"
+"POT-Creation-Date: 2025-04-22 08:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,19 +55,27 @@ msgstr ""
 msgid "Remove all..."
 msgstr ""
 
-#: ../qml/Main.qml:113
+#: ../qml/Main.qml:109
+msgid "Row Button is Working"
+msgstr ""
+
+#: ../qml/Main.qml:114
 msgid "Remove selected..."
 msgstr ""
 
-#: ../qml/Main.qml:159
+#: ../qml/Main.qml:145
+msgid "Info trailing button pressed"
+msgstr ""
+
+#: ../qml/Main.qml:160
 msgid "Remove all items"
 msgstr ""
 
-#: ../qml/Main.qml:160 ../qml/Main.qml:170
+#: ../qml/Main.qml:161 ../qml/Main.qml:171
 msgid "Are you sure?"
 msgstr ""
 
-#: ../qml/Main.qml:169
+#: ../qml/Main.qml:170
 msgid "Remove selected items"
 msgstr ""
 

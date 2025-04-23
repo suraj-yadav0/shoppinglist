@@ -105,7 +105,8 @@ MainView {
                 id: buttonRemoveAll
                 text: i18n.tr("Remove all...")
                 width: parent.width / 2 - units.gu(0.5)
-                onClicked: PopupUtils.open(removeAllDialog)
+              //  onClicked: PopupUtils.open(removeAllDialog)
+              onClicked : console.log(i18n.tr('Row Button is Working'))
             }
 
             Button {
@@ -141,7 +142,7 @@ MainView {
                     actions: [
                         Action {
                             iconName: "info"
-                            onTriggered: shoppinglistModel.remove(index)
+                            onTriggered: console.log(i18n.tr("Info trailing button pressed"))
                         }
                     ]
                 }
