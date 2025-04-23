@@ -106,7 +106,7 @@ Module 2
 
       1. Use
 
-      .. code:: json
+      .. code:: jsx
 
          StyleHints {        foregroundColor: "orange"    }
 
@@ -122,7 +122,7 @@ Module 2
       certain properties. The Text component might not be appearing
       because ListItem has its own layout system.
 
-   .. code:: json
+   .. code:: jsx
 
       ListView {
           id: shoppinglistView
