@@ -107,13 +107,13 @@ Module 2
 
       1. Use
 
-      .. code:: json
+      .. code:: jsx
 
          StyleHints {        foregroundColor: "orange"    }
 
 --------------
 
-1. Issue with the ListView delegate
+3. Issue with the ListView delegate
 
 -  Solution
 
@@ -123,7 +123,7 @@ Module 2
       certain properties. The Text component might not be appearing
       because ListItem has its own layout system.
 
-   .. code:: json
+   .. code:: jsx
 
       ListView {
           id: shoppinglistView
