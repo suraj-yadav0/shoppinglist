@@ -227,6 +227,7 @@ MainView {
                 Text {
                     id: itemText
                     text: name
+                    color: theme.palette.normal.baseText
                     anchors {
                         left: root.selectionMode ? itemCheckbox.right : parent.left
                         leftMargin: root.selectionMode ? units.gu(1) : units.gu(2)
@@ -236,6 +237,7 @@ MainView {
 
                 Text {
                     text: price
+                    color: theme.palette.normal.baseText
                     anchors {
                         right: parent.right
                         rightMargin: units.gu(2)

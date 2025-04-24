@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shoppinglist.surajyadav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-24 09:39+0000\n"
+"POT-Creation-Date: 2025-04-24 10:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,23 +55,23 @@ msgstr ""
 msgid "Info trailing button pressed"
 msgstr ""
 
-#: ../qml/Main.qml:280
+#: ../qml/Main.qml:282
 msgid "Remove all..."
 msgstr ""
 
-#: ../qml/Main.qml:288
+#: ../qml/Main.qml:290
 msgid "Remove selected..."
 msgstr ""
 
-#: ../qml/Main.qml:299
+#: ../qml/Main.qml:301
 msgid "Remove all items"
 msgstr ""
 
-#: ../qml/Main.qml:300 ../qml/Main.qml:315
+#: ../qml/Main.qml:302 ../qml/Main.qml:317
 msgid "Are you sure?"
 msgstr ""
 
-#: ../qml/Main.qml:314
+#: ../qml/Main.qml:316
 msgid "Remove selected items"
 msgstr ""
 
