@@ -40,16 +40,33 @@ MainView {
         function addItem(name, selected) {
             shoppinglistModel.append({
                 "name": name,
+                "price": 0,
                 "selected": selected
             });
+            getItemPrice(shoppinglistModel.get(shoppinglistModel.count - 1));
         }
 
         function removeSelectedItems() {
-	for(var i=shoppinglistModel.count-1; i>=0; i--) {
-		if(shoppinglistModel.get(i).selected)
-			shoppinglistModel.remove(i);
-	}
-}
+            for (var i = shoppinglistModel.count - 1; i >= 0; i--) {
+                if (shoppinglistModel.get(i).selected)
+                    shoppinglistModel.remove(i);
+            }
+        }
+    }
+
+    property string itemPriceURL: "http://apishoppinglist.codefounders.nl/itemprice.php?itemname="
+
+    function getItemPrice(item) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                var result = JSON.parse(xhr.responseText.toString());
+                item.price = result.price;
+            }
+        };
+
+        xhr.open("GET", itemPriceURL + encodeURIComponent(item.name));
+        xhr.send();
     }
 
     Page {
@@ -92,7 +109,7 @@ MainView {
                 rightMargin: units.gu(2)
             }
             text: i18n.tr('Add')
-            onClicked: shoppinglistModel.addItem(textFieldInput.text, false);
+            onClicked: shoppinglistModel.addItem(textFieldInput.text, false)
         }
 
         // The input textfield
@@ -121,12 +138,12 @@ MainView {
                 topMargin: units.gu(2)
             }
             model: shoppinglistModel
-function refresh() {
-	// Refresh the list to update the selected status
-	var tmp = model;
-	model = null;
-	model = tmp;
-}
+            function refresh() {
+                // Refresh the list to update the selected status
+                var tmp = model;
+                model = null;
+                model = tmp;
+            }
             delegate: ListItem {
                 Rectangle {
                     anchors.fill: parent
@@ -172,16 +189,26 @@ function refresh() {
                         verticalCenter: parent.verticalCenter
                     }
                 }
+
+                Text {
+                    text: price
+                    anchors {
+                        right: parent.right
+                        rightMargin: units.gu(2)
+                        verticalCenter: parent.verticalCenter
+                    }
+                }
+
                 MouseArea {
-	anchors.fill: parent
-	onPressAndHold: root.selectionMode = true;
-	onClicked: {
-		if(root.selectionMode) {
-			shoppinglistModel.get(index).selected = !shoppinglistModel.get(index).selected;
-			shoppinglistView.refresh();
-        }
-	}
-}
+                    anchors.fill: parent
+                    onPressAndHold: root.selectionMode = true
+                    onClicked: {
+                        if (root.selectionMode) {
+                            shoppinglistModel.get(index).selected = !shoppinglistModel.get(index).selected;
+                            shoppinglistView.refresh();
+                        }
+                    }
+                }
             }
         }
 
@@ -233,9 +260,9 @@ function refresh() {
             title: i18n.tr("Remove selected items")
             text: i18n.tr("Are you sure?")
             onDoAction: {
-	shoppinglistModel.removeSelectedItems();
-	root.selectionMode = false;
-}
+                shoppinglistModel.removeSelectedItems();
+                root.selectionMode = false;
+            }
         }
     }
 
