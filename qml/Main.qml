@@ -20,7 +20,7 @@ import Lomiri.Components 1.3
 import QtQuick.Layouts 1.3
 import Qt.labs.settings 1.0
 import Ubuntu.Components.Popups 1.3
-import "./"
+import QtQuick.LocalStorage 2.7
 
 MainView {
     id: root
@@ -31,7 +31,17 @@ MainView {
     width: units.gu(45)
     height: units.gu(75)
 
+    //Properties of Our Main view Object
+
     property bool selectionMode: false
+    property string dbName: "ShoppingListDB"
+    property string dbVersion: "1.0"
+    property string dbDescription: "Database for shopping list app"
+    property int dbEstimatedSize: 10000
+    property var db: LocalStorage.openDatabaseSync(dbName, dbVersion, dbDescription, dbEstimatedSize)
+    property string shoppingListTable: "ShoppingList"
+
+    
 
     //Our List Model
     ListModel {
