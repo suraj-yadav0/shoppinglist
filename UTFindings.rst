@@ -2,6 +2,7 @@ The UT Findings
 ===============
 
 
+
 Module 1
 --------
 
@@ -106,7 +107,7 @@ Module 2
 
       1. Use
 
-      .. code:: jsx
+      .. code:: json
 
          StyleHints {        foregroundColor: "orange"    }
 
@@ -122,7 +123,7 @@ Module 2
       certain properties. The Text component might not be appearing
       because ListItem has its own layout system.
 
-   .. code:: jsx
+   .. code:: json
 
       ListView {
           id: shoppinglistView
@@ -236,3 +237,155 @@ Module 4
               }
           }
       }
+
+--------------
+
+1. Text of Listview is not properly visible in dark Mode
+
+-  Solution
+
+   In dark mode, the default system might be setting text to a dark
+   color, which would be invisible against a dark background.
+
+   To fix this issue, you should:
+
+   1. Either explicitly set the text color to match your theme
+   2. Or better, use Lomiri Components’ Label instead of Text to
+      automatically handle theming
+
+   Here’s how you could fix it:
+
+   .. code:: jsx
+
+      // Option 1: Explicitly set color
+      Text {
+          id: itemText
+          text: name
+          color: theme.palette.normal.baseText  // Use theme colors
+          anchors {
+              left: root.selectionMode ? itemCheckbox.right : parent.left
+              leftMargin: root.selectionMode ? units.gu(1) : units.gu(2)
+              verticalCenter: parent.verticalCenter
+          }
+      }
+
+      Text {
+          text: price
+          color: theme.palette.normal.baseText  // Use theme colors
+          anchors {
+              right: parent.right
+              rightMargin: units.gu(2)
+              verticalCenter: parent.verticalCenter
+          }
+      }
+
+      // Option 2: Use Label instead (preferred approach)
+      Label {
+          id: itemText
+          text: name
+          anchors {
+              left: root.selectionMode ? itemCheckbox.right : parent.left
+              leftMargin: root.selectionMode ? units.gu(1) : units.gu(2)
+              verticalCenter: parent.verticalCenter
+          }
+      }
+
+      Label {
+          text: price
+          anchors {
+              right: parent.right
+              rightMargin: units.gu(2)
+              verticalCenter: parent.verticalCenter
+          }
+      }
+
+--------------
+
+Module 5
+--------
+
+1. While Setting the SQL Data base when you run this command
+
+``SELECT rowid, name, selected FROM ShoppingList;`` and Do not see the
+Entire List . Do not panic , You Can add the items manually. - Sulution
+
+::
+
+   ```sql
+   INSERT INTO ShoppingList (name, selected) 
+   VALUES 
+       ("water", false),
+       ("bread", false),
+       ("bananas", true),
+       ("milk", false);
+   ```
+
+--------------
+
+2. Mouse Area Not Working Properly while adding the new function to
+   Mouse Area
+
+-  Solution
+
+   The ``onClicked`` handler is defined as a function but it’s missing
+   the parameter for the function to properly work.
+
+   Here are the problems:
+
+   1. The ``onClicked`` handler is set up as a function named
+      ``toggleSelectionStatus``, but it’s not being called anywhere
+   2. The function expects an ``index`` parameter, but there’s no index
+      being passed to it
+   3. The MouseArea’s onClicked doesn’t automatically provide an index
+      parameter
+
+   The correct implementation should either:
+
+   -  Call the function inside the onClicked handler, or
+   -  Simply use onClicked as a direct handler without defining it as a
+      named function
+
+   Here’s how you could fix it:
+
+   .. code:: jsx
+
+      MouseArea {
+          anchors.fill: parent
+          onPressAndHold: root.selectionMode = true
+          onClicked: {
+              if (root.selectionMode) {
+                  var rowid = shoppinglistModel.get(index).rowid;
+                  var selected = !shoppinglistModel.get(index).selected;
+                  db.transaction(function (tx) {
+                      tx.executeSql('UPDATE ' + shoppingListTable + ' SET selected=? WHERE rowid=?', [Boolean(selected), rowid]);
+                  });
+                  shoppinglistModel.get(index).selected = selected;
+                  shoppinglistView.refresh();
+              }
+          }
+      }
+
+--------------
+
+Module 6
+--------
+
+1. If You face problem while installing flask with
+
+``pip3 install Flask`` , try using pipx or python3 install flask -
+Solution
+
+::
+
+   ```bash
+   pipx install flask
+   ```
+
+
+--------------
+
+
+
+
+No Errors were Found in 7th and 8th Module
+
