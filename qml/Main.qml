@@ -90,7 +90,7 @@ MainView {
         }
     }
 
-    property string itemPriceURL: "http://apishoppinglist.codefounders.nl/itemprice.php?itemname="
+    property string itemPriceURL: "http://192.168.1.67:5000/itemprice?itemname="
 
     function getItemPrice(item) {
         var xhr = new XMLHttpRequest();
