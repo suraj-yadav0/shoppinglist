@@ -41,22 +41,48 @@ MainView {
     property var db: LocalStorage.openDatabaseSync(dbName, dbVersion, dbDescription, dbEstimatedSize)
     property string shoppingListTable: "ShoppingList"
 
-    
+    // Databse Function
+
+    function initializeShoppingList() {
+        db.transaction(function (tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS ' + shoppingListTable + ' (name TEXT, selected BOOLEAN)');
+            var results = tx.executeSql('SELECT rowid, name, selected FROM ' + shoppingListTable);
+
+            // Update ListModel
+            for (var i = 0; i < results.rows.length; i++) {
+                shoppinglistModel.append({
+                    "rowid": results.rows.item(i).rowid,
+                    "name": results.rows.item(i).name,
+                    "price": 0,
+                    "selected": Boolean(results.rows.item(i).selected)
+                });
+                getItemPrice(shoppinglistModel.get(shoppinglistModel.count - 1));
+            }
+        });
+    }
 
     //Our List Model
     ListModel {
         id: shoppinglistModel
 
         function addItem(name, selected) {
-            shoppinglistModel.append({
-                "name": name,
-                "price": 0,
-                "selected": selected
+            db.transaction(function (tx) {
+                var result = tx.executeSql('INSERT INTO ' + shoppingListTable + ' (name, selected) VALUES( ?, ? )', [name, selected]);
+                var rowid = Number(result.insertId);
+                shoppinglistModel.append({
+                    "rowid": rowid,
+                    "name": name,
+                    "price": 0,
+                    "selected": selected
+                });
+                getItemPrice(shoppinglistModel.get(shoppinglistModel.count - 1));
             });
-            getItemPrice(shoppinglistModel.get(shoppinglistModel.count - 1));
         }
 
         function removeSelectedItems() {
+            db.transaction(function (tx) {
+                tx.executeSql('DELETE FROM ' + shoppingListTable + ' WHERE selected=?', [Boolean(true)]);
+            });
             for (var i = shoppinglistModel.count - 1; i >= 0; i--) {
                 if (shoppinglistModel.get(i).selected)
                     shoppinglistModel.remove(i);
@@ -80,6 +106,8 @@ MainView {
     }
 
     Page {
+
+        Component.onCompleted: initializeShoppingList()
         anchors.fill: parent
 
         header: PageHeader {
@@ -165,7 +193,13 @@ MainView {
                     actions: [
                         Action {
                             iconName: "delete"
-                            onTriggered: shoppinglistModel.remove(index)
+                            onTriggered: function removeItem(index) {
+                                var rowid = shoppinglistModel.get(index).rowid;
+                                db.transaction(function (tx) {
+                                    tx.executeSql('DELETE FROM ' + shoppingListTable + ' WHERE rowid=?', [rowid]);
+                                });
+                                shoppinglistModel.remove(index);
+                            }
                         }
                     ]
                 }
@@ -214,7 +248,12 @@ MainView {
                     onPressAndHold: root.selectionMode = true
                     onClicked: {
                         if (root.selectionMode) {
-                            shoppinglistModel.get(index).selected = !shoppinglistModel.get(index).selected;
+                            var rowid = shoppinglistModel.get(index).rowid;
+                            var selected = !shoppinglistModel.get(index).selected;
+                            db.transaction(function (tx) {
+                                tx.executeSql('UPDATE ' + shoppingListTable + ' SET selected=? WHERE rowid=?', [Boolean(selected), rowid]);
+                            });
+                            shoppinglistModel.get(index).selected = selected;
                             shoppinglistView.refresh();
                         }
                     }
@@ -259,7 +298,12 @@ MainView {
         OKCancelDialog {
             title: i18n.tr("Remove all items")
             text: i18n.tr("Are you sure?")
-            onDoAction: shoppinglistModel.clear()
+            onDoAction: function removeAllItems() {
+                db.transaction(function (tx) {
+                    tx.executeSql('DELETE FROM ' + shoppingListTable);
+                });
+                shoppinglistModel.clear();
+            }
         }
     }
 
