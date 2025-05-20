@@ -152,7 +152,8 @@ Module 2
 
 
 .. image:: images/ListItemLayoutSolution.png
-  :width: 400
+  :width: 800
+  :height: 600
   :alt: Alternative text
 
 --------------
