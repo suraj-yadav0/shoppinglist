@@ -115,6 +115,12 @@ Module 2
 
 3. Issue with the ListView delegate , ListItem are not displayed
 
+
+.. image:: images/ListItemLayoutError.png
+  :width: 400
+  :alt: Alternative text
+
+
 -  Solution
 
    1. The height you set for the ListItem is quite small at 3 grid
@@ -144,6 +150,11 @@ Module 2
           }
       }
 
+
+.. image:: images/ListItemLayoutSolution.png
+
+  :alt: Alternative text
+
 --------------
 
 Module 3
@@ -163,19 +174,17 @@ Module 3
 2. The Buttons in the Row are not working. → 3.4 in the Docs
 
 
-.. image:: images/ListItemLayoutError.png
-  :width: 400
-  :alt: Alternative text
+
 
 
 
 -  Solution 3.4
 
-   The **buttons inside the ``Row`` layout at the bottom** may not be
-   functioning as expected due to **conflicts with the ``ListView``
-   layout constraints**, **z-index**, or overlapping items.
+   The buttons inside the ``Row`` layout at the bottom may not be
+   functioning as expected due to conflicts with the ``ListView``
+   layout constraints**, z-index, or overlapping items.
 
-   Update the ``ListView``\ ’s ``bottom`` anchor to stop before hitting
+   Update the ``ListView``\ ’s `bottom` anchor to stop before hitting
    the ``Row``:
 
    .. code:: jsx
@@ -189,6 +198,10 @@ Module 4
 
 1. Odd Rows Become Invisible during 5.1 while Creating Property for
    Selection Mode
+
+.. image:: images/5.1OddRowTransparent.png
+
+  :alt: Alternative text
 
 -  Solution to 5.1
 
