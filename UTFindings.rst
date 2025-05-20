@@ -145,8 +145,8 @@ Module 2
           delegate: ListItem {
               // Remove fixed height to let it size naturally
               ListItemLayout {
-                  title.text: name  // This is the proper way to display text in a ListItem
-                  title.color: "white"  // Make text visible against the dark background
+                  title.text: name  
+                  title.color: "white"  
               }
           }
       }
@@ -184,7 +184,7 @@ Module 3
 
    The buttons inside the ``Row`` layout at the bottom may not be
    functioning as expected due to conflicts with the ``ListView``
-   layout constraints**, z-index, or overlapping items.
+   layout constraints, z-index, or overlapping items.
 
    Update the ``ListView``\ ’s `bottom` anchor to stop before hitting
    the ``Row``:
@@ -202,7 +202,8 @@ Module 4
    Selection Mode
 
 .. image:: images/5.1OddRowTransparent.png
-
+  :width: 400
+  :height: 800
   :alt: Alternative text
 
 -  Solution to 5.1
@@ -260,9 +261,20 @@ Module 4
           }
       }
 
+.. image:: images/OddRowTransparentSolution(5.1)Solution.png
+  :width: 400
+  :height: 700
+  :alt: Alternative text
+
 --------------
 
 1. Text of Listview is not properly visible in dark Mode
+
+
+.. image:: images/TextnotVisibleindarkMode.png
+  :width: 400
+  :height: 800
+  :alt: Alternative text
 
 -  Solution
 
@@ -283,7 +295,7 @@ Module 4
       Text {
           id: itemText
           text: name
-          color: theme.palette.normal.baseText  // Use theme colors
+          color: theme.palette.normal.baseText  
           anchors {
               left: root.selectionMode ? itemCheckbox.right : parent.left
               leftMargin: root.selectionMode ? units.gu(1) : units.gu(2)
@@ -320,6 +332,14 @@ Module 4
               verticalCenter: parent.verticalCenter
           }
       }
+
+
+
+.. image:: images/TextVisibilitySolved.png
+  :width: 400
+  :height: 700
+  :alt: Alternative text
+
 
 --------------
 
