@@ -117,7 +117,8 @@ Module 2
 
 
 .. image:: images/ListItemLayoutError.png
-  :width: 400
+  :width: 1200
+  :height: 800
   :alt: Alternative text
 
 
@@ -152,8 +153,8 @@ Module 2
 
 
 .. image:: images/ListItemLayoutSolution.png
-  :width: 800
-  :height: 600
+  :width: 1200
+  :height: 800
   :alt: Alternative text
 
 --------------
