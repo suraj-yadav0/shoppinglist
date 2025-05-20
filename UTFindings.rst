@@ -113,7 +113,7 @@ Module 2
 
 --------------
 
-3. Issue with the ListView delegate
+3. Issue with the ListView delegate , ListItem are not displayed
 
 -  Solution
 
@@ -161,6 +161,13 @@ Module 3
 ---
 
 2. The Buttons in the Row are not working. → 3.4 in the Docs
+
+
+.. image:: images/ListItemLayoutError.png
+  :width: 400
+  :alt: Alternative text
+
+
 
 -  Solution 3.4
 
